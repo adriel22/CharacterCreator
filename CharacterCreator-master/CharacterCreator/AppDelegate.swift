@@ -17,7 +17,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-       
+//        let character = Character(context: persistentContainer.viewContext)
+//        character.name = "zezim"
+//        character.about = "sdfsdg"
+//        character.anime = "Narutis"
+//        character.id = 2
+//        CoreDataManager.sharedInstance.fetchCharacters()
+//
+        
+        if(CoreDataManager.sharedInstance.characters.count == 0){
+            let character = Character(context: persistentContainer.viewContext)
+            
+            let dispachQueue = DispatchQueue(label: "requestQueue", qos: .background)
+            dispachQueue.async {
+                for i in 1...31{
+                    
+                    if(i%2 == 0){
+                        sleep(1)
+                    }
+                    
+                    APIManager.sharedInstance.getCharacterWithId(characterID: i) { (json) in
+                        if let name = (json["name"]){
+                            character.name = (name as! String)
+                            character.anime = "Narutis"
+                            character.about = "sdfsdf"
+                            character.id = Int16(i)
+                            CoreDataManager.sharedInstance.saveCharacter(character: character)
+                            
+                        }
+                        
+                        
+                    }
+                }
+            }
+            
+        }
+//        CoreDataManager.sharedInstance.resetCoreData()
         return true
     }
 

@@ -61,26 +61,42 @@
                     <tabBarItem key="tabBarItem" title="Get Inspirations" id="RU3-IO-Ckp"/>
                     <connections>
                         <outlet property="tableView" destination="lbG-a7-bDc" id="ltT-iP-CIx"/>
+                        <segue destination="Nei-5t-clt" kind="presentation" id="ZjX-As-wvG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FcI-ww-TZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="112.8" y="1341.6791604197902"/>
         </scene>
-        <!--View Controller-->
+        <!--Loading View Controller-->
         <scene sceneID="2NQ-0F-5Kr">
             <objects>
-                <viewController id="Nei-5t-clt" sceneMemberID="viewController">
+                <viewController id="Nei-5t-clt" customClass="LoadingViewController" customModule="CharacterCreator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EVU-fm-lH4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CGi-en-Ba7">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hy0-fb-q46" firstAttribute="trailing" secondItem="CGi-en-Ba7" secondAttribute="trailing" id="ViK-y9-IMq"/>
+                            <constraint firstItem="CGi-en-Ba7" firstAttribute="leading" secondItem="hy0-fb-q46" secondAttribute="leading" id="d05-3V-CrS"/>
+                            <constraint firstItem="hy0-fb-q46" firstAttribute="bottom" secondItem="CGi-en-Ba7" secondAttribute="bottom" id="p0R-fL-Zrf"/>
+                            <constraint firstItem="CGi-en-Ba7" firstAttribute="top" secondItem="hy0-fb-q46" secondAttribute="top" id="zdV-Rs-J9t"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hy0-fb-q46"/>
                     </view>
+                    <connections>
+                        <outlet property="loadingImageView" destination="CGi-en-Ba7" id="RcF-s9-CzL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Scq-Jd-uEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="985" y="1342"/>
+            <point key="canvasLocation" x="847" y="1342"/>
         </scene>
     </scenes>
 </document>

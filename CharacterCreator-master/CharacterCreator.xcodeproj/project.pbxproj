@@ -20,6 +20,8 @@
 		FC02EB0E217618490064C18E /* GetInspirations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC02EB0D217618490064C18E /* GetInspirations.storyboard */; };
 		FC02EB11217619AF0064C18E /* GetInspirationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02EB10217619AF0064C18E /* GetInspirationsViewController.swift */; };
 		FC02EB1521761B4D0064C18E /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02EB1421761B4D0064C18E /* CharacterTableViewCell.swift */; };
+		FCF36A512178B5A900BCB411 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF36A502178B5A900BCB411 /* LoadingViewController.swift */; };
+		FCF4F0482177ACD100CC2E49 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF4F0472177ACD100CC2E49 /* CoreDataManager.swift */; };
 		FCF78E6721774F95008F828A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF78E6621774F95008F828A /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		FC02EB0D217618490064C18E /* GetInspirations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetInspirations.storyboard; sourceTree = "<group>"; };
 		FC02EB10217619AF0064C18E /* GetInspirationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInspirationsViewController.swift; sourceTree = "<group>"; };
 		FC02EB1421761B4D0064C18E /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		FCF36A502178B5A900BCB411 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		FCF4F0472177ACD100CC2E49 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FCF78E6621774F95008F828A /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +115,7 @@
 		FC02EAD32176103E0064C18E /* CharacterCreator */ = {
 			isa = PBXGroup;
 			children = (
+				FCF36A522178B77400BCB411 /* Protocols */,
 				FCF78E6821776F76008F828A /* Model */,
 				FC02EB052176156C0064C18E /* Storyborads */,
 				FCF78E6521774F34008F828A /* Web */,
@@ -159,8 +164,16 @@
 			children = (
 				FC02EB1421761B4D0064C18E /* CharacterTableViewCell.swift */,
 				FC02EB10217619AF0064C18E /* GetInspirationsViewController.swift */,
+				FCF36A502178B5A900BCB411 /* LoadingViewController.swift */,
 			);
 			path = Controlers;
+			sourceTree = "<group>";
+		};
+		FCF36A522178B77400BCB411 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		FCF78E6521774F34008F828A /* Web */ = {
@@ -174,6 +187,7 @@
 		FCF78E6821776F76008F828A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FCF4F0472177ACD100CC2E49 /* CoreDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +327,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCF36A512178B5A900BCB411 /* LoadingViewController.swift in Sources */,
+				FCF4F0482177ACD100CC2E49 /* CoreDataManager.swift in Sources */,
 				FCF78E6721774F95008F828A /* APIManager.swift in Sources */,
 				FC02EB11217619AF0064C18E /* GetInspirationsViewController.swift in Sources */,
 				FC02EB1521761B4D0064C18E /* CharacterTableViewCell.swift in Sources */,
