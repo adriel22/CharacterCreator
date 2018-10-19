@@ -16,9 +16,13 @@ class APIManager: NSObject {
     static let sharedInstance = APIManager()
     static let getCharacterEndPoint = "/character/"
     
-    func getCharacterWithId(characterID: Int, complition: @escaping([String:Any]) -> ()){
+    func getCharacterWithId(characterID: Int, orImage getImage: Bool? = false, complition: @escaping([String:Any]) -> ()){
         
-        let url: String = baseURL + APIManager.getCharacterEndPoint + String(characterID)
+        var url: String = baseURL + APIManager.getCharacterEndPoint + String(characterID)
+        if(getImage!){
+            url = url + "/pictures"
+            
+        }
         let request : NSMutableURLRequest = NSMutableURLRequest(url: NSURL(string: url)! as URL)
         request.httpMethod = "GET"
         let session = URLSession.shared
@@ -38,5 +42,6 @@ class APIManager: NSObject {
         })
         task.resume()
     }
+    
     
 }

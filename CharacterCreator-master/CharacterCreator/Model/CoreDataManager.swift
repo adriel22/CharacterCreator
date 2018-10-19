@@ -27,6 +27,7 @@ class CoreDataManager {
         characterManegedObject.anime = character.anime
         characterManegedObject.about = character.about
         characterManegedObject.id = character.id
+        characterManegedObject.imageURL = character.imageURL
         
         do{
             try context.save()
@@ -41,7 +42,8 @@ class CoreDataManager {
         
         do{
             let fetchedCharacters = try context.fetch(charactersFetch) as! [Character]
-            self.characters.append(contentsOf: fetchedCharacters)
+            print(fetchedCharacters.count)
+            self.characters = fetchedCharacters.sorted(by: { return $0.id < $1.id})
         }catch{
             fatalError("Failed to fetch character: \(error)")
         }
@@ -56,8 +58,20 @@ class CoreDataManager {
             for character in fetchedCharacters{
                 context.delete(character)
             }
+            try context.save()
+            self.characters = []
         }catch{
             fatalError("Failed to fetch character: \(error)")
+        }
+    }
+    
+    func updateImageURL(fromCharacter character: Character, withURL url: String) {
+        let context = appDelegate.persistentContainer.viewContext
+        character.imageURL = url
+        do{
+            try context.save()
+        }catch{
+            fatalError("Failed to save context: \(error)")
         }
     }
 }

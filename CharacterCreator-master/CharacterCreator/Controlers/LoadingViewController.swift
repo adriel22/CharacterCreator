@@ -10,26 +10,44 @@ import UIKit
 
 class LoadingViewController: UIViewController {
     @IBOutlet weak var loadingImageView: UIImageView!
+    var delegate: LoadingScreenDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+     
+//        let dispachQueue = DispatchQueue(label: "requestQueue", qos: .background)
+//        dispachQueue.async {
+//            while true {
+//                print(CoreDataManager.sharedInstance.characters.count)
+//                CoreDataManager.sharedInstance.fetchCharacters()
+//                    if(CoreDataManager.sharedInstance.characters.count > 10){
+//                        print("sim")
+//                        //self.dismiss(animated: true) {
+//                        self.delegate?.didDismiss()
+//                        self.dismiss(animated: true, completion: nil)
+//                        break
+//                }
+//            }
+//
+//        }
+        
+        
+        }
+    
+
+    override func viewDidAppear(_ animated: Bool) {
         while true {
+            print(CoreDataManager.sharedInstance.characters.count)
+            CoreDataManager.sharedInstance.fetchCharacters()
             if(CoreDataManager.sharedInstance.characters.count > 10){
-                self.dismiss(animated: true, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+                
+                //self.dismiss(animated: true) {
+                self.delegate?.didDismiss()
+                self.dismiss(animated: true, completion: nil)
+                break
             }
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

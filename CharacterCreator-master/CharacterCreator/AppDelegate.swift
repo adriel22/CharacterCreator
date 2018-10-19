@@ -13,46 +13,56 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        let character = Character(context: persistentContainer.viewContext)
-//        character.name = "zezim"
-//        character.about = "sdfsdg"
-//        character.anime = "Narutis"
-//        character.id = 2
-//        CoreDataManager.sharedInstance.fetchCharacters()
-//
-        
+//        CoreDataManager.sharedInstance.resetCoreData()
+        CoreDataManager.sharedInstance.fetchCharacters()
         if(CoreDataManager.sharedInstance.characters.count == 0){
             let character = Character(context: persistentContainer.viewContext)
-            
+
             let dispachQueue = DispatchQueue(label: "requestQueue", qos: .background)
             dispachQueue.async {
                 for i in 1...31{
+
+//                    if(i % 4 == 0){
+//                            sleep(1)
+//                    }
                     
-                    if(i%2 == 0){
-                        sleep(1)
-                    }
-                    
+                    APIManager.sharedInstance.getCharacterWithId(characterID: i, orImage: true, complition: { (json) in
+                        //print(json)
+                        if let pictures = (json["pictures"] as? [[String:Any]]){
+                            if(pictures.count > 0){
+                                let pictureURL = pictures[0]["small"] as! String
+                                character.imageURL = pictureURL 
+//                                print(character.imageURL)
+                                
+                            }
+
+                        }
+                    })
+
                     APIManager.sharedInstance.getCharacterWithId(characterID: i) { (json) in
                         if let name = (json["name"]){
+
                             character.name = (name as! String)
                             character.anime = "Narutis"
                             character.about = "sdfsdf"
                             character.id = Int16(i)
-                            CoreDataManager.sharedInstance.saveCharacter(character: character)
-                            
+                            //print(character)
+
+                                    CoreDataManager.sharedInstance.saveCharacter(character: character)
+                            print(character)
+
                         }
-                        
-                        
                     }
                 }
             }
-            
         }
-//        CoreDataManager.sharedInstance.resetCoreData()
+
+
+        print("count: \(CoreDataManager.sharedInstance.characters.count)")
         return true
     }
 

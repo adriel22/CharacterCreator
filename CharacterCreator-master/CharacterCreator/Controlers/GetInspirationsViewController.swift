@@ -9,51 +9,92 @@
 import UIKit
 
 class GetInspirationsViewController: UIViewController {
-
-    var qtdGetCharacters = 1
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var loadingImageView: UIImageView!
+    var minimunCharacters = false
     
-    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingImageView.image = UIImage(named: "user")
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = 90
-        print(CoreDataManager.sharedInstance.characters)
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 15
+        layout.itemSize = CGSize(width: 130, height: 200)
+        
         CoreDataManager.sharedInstance.fetchCharacters()
+        
+        if(CoreDataManager.sharedInstance.characters.count < 10){
+            performSegue(withIdentifier: "gotoLoading", sender: self)
+            //print("ok")
+        }
+        else{
+            minimunCharacters = true
+        }
     }
     
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "gotoLoading"){
+            let screen = segue.destination as! LoadingViewController
+            screen.delegate = self
+        }
+    }
 
 }
 
-extension GetInspirationsViewController: UITableViewDelegate, UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension GetInspirationsViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell") as! CharacterTableViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterCell", for: indexPath) as! CharacterCollectionViewCell
+        
         cell.characterImage.image = UIImage(named: "user")
-        cell.characterImage.layer.borderWidth = 1
-        print(CoreDataManager.sharedInstance.characters.count)
-        cell.characterName.text = CoreDataManager.sharedInstance.characters[indexPath.row].name
         
-        
-//        APIManager.sharedInstance.getCharacterWithId(characterID: indexPath.row+1) { (json) in
-//
-//            DispatchQueue.main.async {
-//                cell.characterName.text = json["name"] as? String
-//                self.qtdGetCharacters = self.qtdGetCharacters + 1
-//            }
-        
+        if(minimunCharacters){
+            let character = CoreDataManager.sharedInstance.characters[indexPath.row]
+            cell.characterName.text = character.name
             
-//        }
-        
+            DispatchQueue.main.async {
+                
+                let url = URL(string: character.imageURL!)
+                
+                do{
+                    let imageData = try Data(contentsOf: url!)
+                    cell.characterImage.image = UIImage(data: imageData)
+                }catch{
+                    print(error)
+                }
+            }
+            
+            
+            
+        }
+        cell.layer.borderWidth = 1
+        //cell.frame.size.width = 130
+        //cell.frame.size.height = 200
         return cell
     }
     
     
+        
+
+    
 }
+extension GetInspirationsViewController: LoadingScreenDelegate{
+    func didDismiss() {
+        collectionView.reloadData()
+        minimunCharacters = true
+        
+    }
+    
+
+}
+
+
