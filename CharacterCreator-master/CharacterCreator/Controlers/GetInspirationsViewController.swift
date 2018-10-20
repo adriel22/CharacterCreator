@@ -16,6 +16,7 @@ class GetInspirationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let screenWidth = UIScreen.main.bounds.width
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -23,9 +24,11 @@ class GetInspirationsViewController: UIViewController {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 15
-        layout.itemSize = CGSize(width: 130, height: 200)
+        let cellWidth = (screenWidth-60) / 2
+        layout.itemSize = CGSize(width: cellWidth, height: 200)
         
         CoreDataManager.sharedInstance.fetchCharacters()
+
         
         if(CoreDataManager.sharedInstance.characters.count < 10){
             performSegue(withIdentifier: "gotoLoading", sender: self)
@@ -62,16 +65,11 @@ extension GetInspirationsViewController: UICollectionViewDelegate, UICollectionV
             cell.characterName.text = character.name
             
             DispatchQueue.main.async {
+                let data = Storage.retrieve(character.imageURL!, from: .documents, as: CharacterImage.self)
+                cell.characterImage.image = UIImage(data: data.image)
                 
-                let url = URL(string: character.imageURL!)
-                
-                do{
-                    let imageData = try Data(contentsOf: url!)
-                    cell.characterImage.image = UIImage(data: imageData)
-                }catch{
-                    print(error)
-                }
             }
+            
             
             
             

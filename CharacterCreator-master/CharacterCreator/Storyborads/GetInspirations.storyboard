@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gN2-sC-cOk">
-                                <rect key="frame" x="30" y="20" width="315" height="647"/>
+                                <rect key="frame" x="15" y="20" width="345" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MAM-F2-yzb">
                                     <size key="itemSize" width="50" height="50"/>
@@ -37,17 +37,15 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="29N-9w-l3o">
                                                     <rect key="frame" x="0.0" y="0.0" width="130" height="200"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEF-gH-gR1" userLabel="Background">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEF-gH-gR1" userLabel="Background">
                                                     <rect key="frame" x="0.0" y="125" width="130" height="75"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kurosaki Ichigo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5Q-3V-5do">
-                                                    <rect key="frame" x="0.0" y="117" width="130" height="83"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kurosaki Ichigo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5Q-3V-5do">
+                                                    <rect key="frame" x="0.0" y="115" width="130" height="85"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
@@ -56,9 +54,17 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="29N-9w-l3o" firstAttribute="leading" secondItem="Rlt-8L-WoH" secondAttribute="leading" id="1ie-ny-0oi"/>
+                                            <constraint firstItem="PEF-gH-gR1" firstAttribute="top" secondItem="Rlt-8L-WoH" secondAttribute="top" constant="125" id="2IF-MJ-5mu"/>
                                             <constraint firstItem="29N-9w-l3o" firstAttribute="top" secondItem="Rlt-8L-WoH" secondAttribute="top" id="8XE-Sq-hhg"/>
+                                            <constraint firstItem="I5Q-3V-5do" firstAttribute="leading" secondItem="Rlt-8L-WoH" secondAttribute="leading" id="BeL-Xl-x6E"/>
+                                            <constraint firstAttribute="bottom" secondItem="PEF-gH-gR1" secondAttribute="bottom" id="CmC-o0-8AT"/>
                                             <constraint firstAttribute="bottom" secondItem="29N-9w-l3o" secondAttribute="bottom" id="FXv-b1-J2d"/>
+                                            <constraint firstItem="I5Q-3V-5do" firstAttribute="top" secondItem="Rlt-8L-WoH" secondAttribute="top" constant="115" id="Oo5-CH-IdS"/>
                                             <constraint firstAttribute="trailing" secondItem="29N-9w-l3o" secondAttribute="trailing" id="QEs-zJ-AGC"/>
+                                            <constraint firstAttribute="trailing" secondItem="I5Q-3V-5do" secondAttribute="trailing" id="fp3-us-eUt"/>
+                                            <constraint firstAttribute="trailing" secondItem="PEF-gH-gR1" secondAttribute="trailing" id="gHo-Br-hHn"/>
+                                            <constraint firstItem="PEF-gH-gR1" firstAttribute="leading" secondItem="Rlt-8L-WoH" secondAttribute="leading" id="h7r-qQ-v8X"/>
+                                            <constraint firstAttribute="bottom" secondItem="I5Q-3V-5do" secondAttribute="bottom" id="x8l-HY-obd"/>
                                         </constraints>
                                         <size key="customSize" width="130" height="200"/>
                                         <connections>
@@ -72,16 +78,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gN2-sC-cOk" firstAttribute="bottom" secondItem="aKR-K4-paY" secondAttribute="bottom" id="6gq-dT-tIP"/>
-                            <constraint firstItem="aKR-K4-paY" firstAttribute="trailing" secondItem="gN2-sC-cOk" secondAttribute="trailing" constant="30" id="PRr-2K-ojX"/>
+                            <constraint firstItem="aKR-K4-paY" firstAttribute="trailing" secondItem="gN2-sC-cOk" secondAttribute="trailing" constant="15" id="PRr-2K-ojX"/>
                             <constraint firstItem="gN2-sC-cOk" firstAttribute="top" secondItem="aKR-K4-paY" secondAttribute="top" id="UyY-0i-vuh"/>
-                            <constraint firstItem="gN2-sC-cOk" firstAttribute="leading" secondItem="aKR-K4-paY" secondAttribute="leading" constant="30" id="Zeo-Jj-gpW"/>
+                            <constraint firstItem="gN2-sC-cOk" firstAttribute="leading" secondItem="aKR-K4-paY" secondAttribute="leading" constant="15" id="Zeo-Jj-gpW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aKR-K4-paY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Get Inspirations" id="RU3-IO-Ckp"/>
                     <connections>
                         <outlet property="collectionView" destination="gN2-sC-cOk" id="6Ks-5u-s56"/>
-                        <segue destination="Nei-5t-clt" kind="presentation" identifier="gotoLoading" id="ZjX-As-wvG"/>
+                        <segue destination="Nei-5t-clt" kind="presentation" identifier="gotoLoading" animates="NO" id="ZjX-As-wvG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FcI-ww-TZG" userLabel="First Responder" sceneMemberID="firstResponder"/>

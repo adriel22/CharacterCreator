@@ -44,7 +44,7 @@ class LoadingViewController: UIViewController {
                 
                 //self.dismiss(animated: true) {
                 self.delegate?.didDismiss()
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: false, completion: nil)
                 break
             }
         }
