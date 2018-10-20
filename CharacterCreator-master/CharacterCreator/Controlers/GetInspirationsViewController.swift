@@ -10,7 +10,7 @@ import UIKit
 
 class GetInspirationsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var numberOfCells = 10
     var minimunCharacters = false
     
     
@@ -47,12 +47,11 @@ class GetInspirationsViewController: UIViewController {
             screen.delegate = self
         }
     }
-
 }
 
 extension GetInspirationsViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return numberOfCells
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,21 +69,30 @@ extension GetInspirationsViewController: UICollectionViewDelegate, UICollectionV
                 
             }
             
-            
-            
-            
         }
+        print(indexPath.row)
         cell.layer.borderWidth = 1
-        //cell.frame.size.width = 130
-        //cell.frame.size.height = 200
         return cell
     }
     
-    
-        
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if(indexPath.row == numberOfCells - 2){
+            numberOfCells = numberOfCells + 10
+            DispatchQueue.main.async {
+                collectionView.reloadData()
+            }
+        }
 
-    
+//        let character = Character(context: context)
+//        let dispachQueue = DispatchQueue(label: "requestQueue", qos: .background)
+//        dispachQueue.async {
+//            <#code#>
+//        }
+    }
+
 }
+
+
 extension GetInspirationsViewController: LoadingScreenDelegate{
     func didDismiss() {
         collectionView.reloadData()
