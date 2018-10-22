@@ -15,6 +15,12 @@ class APIManager: NSObject {
     let baseURL = "https://api.jikan.moe/v3"
     static let sharedInstance = APIManager()
     static let getCharacterEndPoint = "/character/"
+    var isRequesting = false
+    var dispatchGroup = DispatchGroup()
+    
+    private override init() {
+        
+    }
     
     func getCharacterWithId(characterID: Int, orImage getImage: Bool? = false, complition: @escaping([String:Any]) -> ()){
         
@@ -43,5 +49,5 @@ class APIManager: NSObject {
         task.resume()
     }
     
-    
+
 }

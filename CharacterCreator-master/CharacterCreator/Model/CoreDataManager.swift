@@ -13,21 +13,22 @@ import UIKit
 class CoreDataManager {
     static let sharedInstance = CoreDataManager()
     var characters: [Character] = []
+    let context: NSManagedObjectContext
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     
     private init(){
-        
+        context  = appDelegate.persistentContainer.viewContext
     }
     
-    func saveCharacter(character: Character) {
-        let context = appDelegate.persistentContainer.viewContext
-        let characterManegedObject = NSEntityDescription.insertNewObject(forEntityName: "Character", into: context) as! Character
-        characterManegedObject.name = character.name
-        characterManegedObject.anime = character.anime
-        characterManegedObject.about = character.about
-        characterManegedObject.id = character.id
-        characterManegedObject.imageURL = character.imageURL
+    func saveCharacter(withName name:String = "", fromAnime anime:String  = "", withImage imageURL: String = "", withHistory about: String = "", andID id: Int16 = 0) {
+        let character = Character(context: context)
+        
+        character.name = name
+        character.about = about
+        character.id = id
+        character.imageURL = imageURL
+        character.anime = anime
         
         do{
             try context.save()
@@ -37,12 +38,12 @@ class CoreDataManager {
     }
     
     func fetchCharacters(){
-        let context = appDelegate.persistentContainer.viewContext
+        
         let charactersFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Character")
         
         do{
             let fetchedCharacters = try context.fetch(charactersFetch) as! [Character]
-            print(fetchedCharacters.count)
+            
             self.characters = fetchedCharacters.sorted(by: { return $0.id < $1.id})
         }catch{
             fatalError("Failed to fetch character: \(error)")
@@ -50,7 +51,7 @@ class CoreDataManager {
     }
     
     func resetCoreData() {
-        let context = appDelegate.persistentContainer.viewContext
+        
         let charactersFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Character")
         
         do{
@@ -65,13 +66,21 @@ class CoreDataManager {
         }
     }
     
-    func updateImageURL(fromCharacter character: Character, withURL url: String) {
-        let context = appDelegate.persistentContainer.viewContext
-        character.imageURL = url
-        do{
-            try context.save()
-        }catch{
-            fatalError("Failed to save context: \(error)")
+    //keep just the first 30 in the core data
+    func clearCoreDataCache() {
+        if(characters.count > 30){
+            
+            
+            for character in characters[30 ... characters.count-1]{
+                context.delete(character)
+            }
+            do{
+                try context.save()
+            }catch{
+                fatalError("Failed to delete characters: \(error)")
+            }
         }
     }
 }
+
+

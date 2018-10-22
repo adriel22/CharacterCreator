@@ -12,17 +12,19 @@ class InitialSettings {
     
     //Called in AppDelegate
     static func firstRequest(){
+    
         
-        let appDelegate = UIApplication.shared.delegate as!AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
         CoreDataManager.sharedInstance.fetchCharacters()
         
         if(CoreDataManager.sharedInstance.characters.count == 0){
-            let character = Character(context: context)
             
-            let dispachQueue = DispatchQueue(label: "requestQueue", qos: .background)
-            dispachQueue.async {
-                for i in 1...50{
+            APIManager.sharedInstance.isRequesting = true
+            
+            
+
+            DispatchQueue.main.async {
+                for i in 1...30{
+                    APIManager.sharedInstance.dispatchGroup.enter()
                     APIManager.sharedInstance.getCharacterWithId(characterID: i, orImage: true, complition: { (json) in
                         
                         if let pictures = (json["pictures"] as? [[String:Any]]){
@@ -38,22 +40,34 @@ class InitialSettings {
                                 }
                             }
                         }
+                        APIManager.sharedInstance.dispatchGroup.leave()
                     })
                     
+                    
+                    APIManager.sharedInstance.dispatchGroup.enter()
                     APIManager.sharedInstance.getCharacterWithId(characterID: i) { (json) in
                         if let name = (json["name"]){
                             
-                            character.name = (name as! String)
-                            character.anime = "Narutis"
-                            character.about = "sdfsdf"
-                            character.id = Int16(i)
-                            character.imageURL = "picture\(i)"
+                            let name = (name as! String)
+                            let anime = "Narutis"
+                            let about = "sdfsdf"
+                            let id = Int16(i)
+                            let imageURL = "picture\(i)"
                             
-                            CoreDataManager.sharedInstance.saveCharacter(character: character)
+                            CoreDataManager.sharedInstance.saveCharacter(withName: name, fromAnime: anime, withImage: imageURL, withHistory: about, andID: id)
+                            
                         }
+                        APIManager.sharedInstance.dispatchGroup.leave()
                     }
+                 
+                }
+                
+                APIManager.sharedInstance.dispatchGroup.notify(queue: .main){
+                    print("Finished")
+                       APIManager.sharedInstance.isRequesting = false
                 }
             }
+//            APIManager.sharedInstance.isRequesting = false
         }
     }
 }

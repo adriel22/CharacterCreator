@@ -15,39 +15,12 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     
-//        let dispachQueue = DispatchQueue(label: "requestQueue", qos: .background)
-//        dispachQueue.async {
-//            while true {
-//                print(CoreDataManager.sharedInstance.characters.count)
-//                CoreDataManager.sharedInstance.fetchCharacters()
-//                    if(CoreDataManager.sharedInstance.characters.count > 10){
-//                        print("sim")
-//                        //self.dismiss(animated: true) {
-//                        self.delegate?.didDismiss()
-//                        self.dismiss(animated: true, completion: nil)
-//                        break
-//                }
-//            }
-//
-//        }
-        
-        
-        }
-    
-
-    override func viewDidAppear(_ animated: Bool) {
-        while true {
-            print(CoreDataManager.sharedInstance.characters.count)
-            CoreDataManager.sharedInstance.fetchCharacters()
-            if(CoreDataManager.sharedInstance.characters.count > 10){
-                
-                //self.dismiss(animated: true) {
-                self.delegate?.didDismiss()
-                self.dismiss(animated: false, completion: nil)
-                break
-            }
+        APIManager.sharedInstance.dispatchGroup.notify(queue: .main) {
+            self.delegate?.didDismiss()
+            self.dismiss(animated: false, completion: nil)
         }
     }
+    
 
+    
 }
