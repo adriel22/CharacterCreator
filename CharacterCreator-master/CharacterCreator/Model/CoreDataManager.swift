@@ -68,10 +68,10 @@ class CoreDataManager {
     
     //keep just the first 30 in the core data
     func clearCoreDataCache() {
-        if(characters.count > 30){
+        if(characters.count > 50){
             
             
-            for character in characters[30 ... characters.count-1]{
+            for character in characters[49 ... characters.count-1]{
                 context.delete(character)
             }
             do{
@@ -80,6 +80,12 @@ class CoreDataManager {
                 fatalError("Failed to delete characters: \(error)")
             }
         }
+    }
+    
+    func getLastId() -> Int{
+        fetchCharacters()
+        let lastID = characters.last?.id
+        return Int(lastID!)
     }
 }
 

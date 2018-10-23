@@ -74,75 +74,59 @@ extension GetInspirationsViewController: UICollectionViewDelegate, UICollectionV
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        if(indexPath.row == numberOfCells - 2){
-//            if(numberOfCells <= CoreDataManager.sharedInstance.characters.count - 10){
-//                numberOfCells = numberOfCells + 10
-//                while(APIManager.sharedInstance.isRequesting){
-//                    print("Waiting requests to be fisinhed")
-//                }
-//
-//                collectionView.reloadData()
-//
-//            }else{
-//                while(APIManager.sharedInstance.isRequesting){
-//                    print("Wating to requests be finished")
-//                }
-//                let myGroup = DispatchGroup()
-//                APIManager.sharedInstance.isRequesting = true
-//
-//                let appDelegate = UIApplication.shared.delegate as!AppDelegate
-//                let context = appDelegate.persistentContainer.viewContext
-//                CoreDataManager.sharedInstance.fetchCharacters()
-//
-//                let character = Character(context: context)
-//                CoreDataManager.sharedInstance.fetchCharacters()
-//                let lastId = Int(CoreDataManager.sharedInstance.characters.last!.id)
-//
-//                DispatchQueue.main.async {
-//                    for i in lastId+1...lastId+11{
-//                        myGroup.enter()
-//                        APIManager.sharedInstance.getCharacterWithId(characterID: i, orImage: true, complition: { (json) in
-//
-//                            if let pictures = (json["pictures"] as? [[String:Any]]){
-//                                if(pictures.count > 0){
-//                                    let pictureURL = pictures[0]["small"] as! String
-//                                    let url = URL(string: pictureURL)
-//                                    do{
-//                                        let data = try Data(contentsOf: url!)
-//                                        let characterImage = CharacterImage(image: data)
-//                                        Storage.store(characterImage, to: .documents, as: "picture\(i)")
-//                                    }catch{
-//                                        print("Error saving pictures in file manager")
-//                                    }
-//                                }
-//                            }
-//                        })
-//
-//                        APIManager.sharedInstance.getCharacterWithId(characterID: i) { (json) in
-//                            if let name = (json["name"]){
-//
-//                                character.name = (name as! String)
-//                                character.anime = "Narutis"
-//                                character.about = "sdfsdf"
-//                                character.id = Int16(i)
-//                                character.imageURL = "picture\(i)"
-//
-//                                CoreDataManager.sharedInstance.saveCharacter(character: character)
-//                            }
-//                        }
-//                    }
-//                    myGroup.notify(queue: .main){
-//                        collectionView.reloadData()
-//                        APIManager.sharedInstance.isRequesting = false
-//                    }
-//
-//                }
-//            }
-//
-//
-//        }
-//    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if(indexPath.row == CoreDataManager.sharedInstance.characters.count - 4){
+            //fazer request de mais 10
+            let lastID = CoreDataManager.sharedInstance.getLastId()
+            DispatchQueue.main.async {
+                for i in lastID + 1...lastID + 11{
+                    APIManager.sharedInstance.dispatchGroup.enter()
+                    APIManager.sharedInstance.getCharacterWithId(characterID: i, orImage: true, complition: { (json) in
+                        
+                        if let pictures = (json["pictures"] as? [[String:Any]]){
+                            if(pictures.count > 0){
+                                let pictureURL = pictures[0]["small"] as! String
+                                let url = URL(string: pictureURL)
+                                do{
+                                    let data = try Data(contentsOf: url!)
+                                    let characterImage = CharacterImage(image: data)
+                                    Storage.store(characterImage, to: .documents, as: "picture\(i)")
+                                }catch{
+                                    print("Error saving pictures in file manager")
+                                }
+                            }
+                        }
+                        APIManager.sharedInstance.dispatchGroup.leave()
+                    })
+                    
+                    
+                    APIManager.sharedInstance.dispatchGroup.enter()
+                    APIManager.sharedInstance.getCharacterWithId(characterID: i) { (json) in
+                        if let name = (json["name"]){
+                            
+                            let name = (name as! String)
+                            let anime = "Narutis"
+                            let about = "sdfsdf"
+                            let id = Int16(i)
+                            let imageURL = "picture\(i)"
+                            
+                            CoreDataManager.sharedInstance.saveCharacter(withName: name, fromAnime: anime, withImage: imageURL, withHistory: about, andID: id)
+                            
+                        }
+                        APIManager.sharedInstance.dispatchGroup.leave()
+                    }
+                    
+                }
+                
+                APIManager.sharedInstance.dispatchGroup.notify(queue: .main){
+                    print("Finished")
+                    APIManager.sharedInstance.isRequesting = false
+                    collectionView.reloadData()
+                }
+            }
+        }
+    }
 
 }
 
