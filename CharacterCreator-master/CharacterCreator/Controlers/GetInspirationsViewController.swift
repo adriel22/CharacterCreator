@@ -15,6 +15,8 @@ class GetInspirationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerForPreviewing(with: self, sourceView: self.view)
+        
         let screenWidth = UIScreen.main.bounds.width
         
         collectionView.dataSource = self
@@ -73,7 +75,14 @@ extension GetInspirationsViewController: UICollectionViewDelegate, UICollectionV
         cell.layer.borderWidth = 1
         return cell
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "CharacterDetail", bundle: nil)
+        let view = storyboard.instantiateViewController(withIdentifier: "CharacterDetail") as! CharacterDetailViewController
+        view.index = indexPath.row
+        self.present(view, animated: true, completion: nil)
+        
+        
+    }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if(indexPath.row == CoreDataManager.sharedInstance.characters.count - 4){
@@ -142,6 +151,23 @@ extension GetInspirationsViewController: LoadingScreenDelegate{
     }
     
 
+}
+
+extension GetInspirationsViewController: UIViewControllerPreviewingDelegate{
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+//        let viewController = UIViewController(
+        let storyboard = UIStoryboard(name: "CharacterDetail", bundle: nil)
+        let view = storyboard.instantiateViewController(withIdentifier: "CharacterDetail") as! CharacterDetailViewController
+        view.index = 1
+        
+        return view
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        print("OK")
+    }
+    
+    
 }
 
 
