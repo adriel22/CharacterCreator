@@ -47,10 +47,10 @@ class InitialSettings {
                     APIManager.sharedInstance.dispatchGroup.enter()
                     APIManager.sharedInstance.getCharacterWithId(characterID: i) { (json) in
                         if let name = (json["name"]){
-                            
+                            let animeography = json["animeography"] as! [[String:Any]]
+                            let anime = animeography[0]["name"] as! String
                             let name = (name as! String)
-                            let anime = "Narutis"
-                            let about = "sdfsdf"
+                            let about = json["about"] as! String
                             let id = Int16(i)
                             let imageURL = "picture\(i)"
                             

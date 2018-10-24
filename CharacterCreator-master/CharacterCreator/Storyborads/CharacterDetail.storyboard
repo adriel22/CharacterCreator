@@ -28,7 +28,7 @@
                                 <rect key="frame" x="16" y="58" width="170" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lqu-xg-wmf">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Lqu-xg-wmf">
                                 <rect key="frame" x="16" y="325" width="343" height="312"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -44,8 +44,8 @@
                                     <action selector="dismissButton:" destination="qL4-qJ-1JB" eventType="touchUpInside" id="pC6-gc-IJG"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Pf-Sp-Kbs">
-                                <rect key="frame" x="255" y="173" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Pf-Sp-Kbs">
+                                <rect key="frame" x="194" y="96" width="165" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -56,6 +56,7 @@
                         <viewLayoutGuide key="safeArea" id="dSb-WD-mLR"/>
                     </view>
                     <connections>
+                        <outlet property="animeLabel" destination="0Pf-Sp-Kbs" id="J9K-jk-fLp"/>
                         <outlet property="characterImage" destination="WW0-aE-33C" id="1bN-cd-WvJ"/>
                         <outlet property="characterName" destination="QYm-Z5-NeQ" id="Kiz-dM-QDC"/>
                         <outlet property="characterText" destination="Lqu-xg-wmf" id="fkf-JP-B2t"/>

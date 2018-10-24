@@ -12,6 +12,7 @@ class CharacterDetailViewController: UIViewController {
     
     var index: Int?
 
+    @IBOutlet weak var animeLabel: UILabel!
     @IBOutlet weak var characterName: UILabel!
     @IBOutlet weak var characterImage: UIImageView!
     @IBOutlet weak var characterText: UITextView!
@@ -19,6 +20,7 @@ class CharacterDetailViewController: UIViewController {
         super.viewDidLoad()
         characterName.text = CoreDataManager.sharedInstance.characters[index!].name
         characterText.text = CoreDataManager.sharedInstance.characters[index!].about
+        animeLabel.text = CoreDataManager.sharedInstance.characters[index!].anime
         let data = Storage.retrieve(CoreDataManager.sharedInstance.characters[index!].imageURL!, from: .documents, as: CharacterImage.self)
         characterImage.image = UIImage(data: data.image)
 

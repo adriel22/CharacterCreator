@@ -15,7 +15,7 @@ class GetInspirationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerForPreviewing(with: self, sourceView: self.view)
+        
         
         let screenWidth = UIScreen.main.bounds.width
         
@@ -72,6 +72,8 @@ extension GetInspirationsViewController: UICollectionViewDelegate, UICollectionV
             
         }
         
+        cell.contentView.accessibilityIdentifier = "\(indexPath.row)"
+        registerForPreviewing(with: self, sourceView: cell.contentView)
         cell.layer.borderWidth = 1
         return cell
     }
@@ -115,8 +117,9 @@ extension GetInspirationsViewController: UICollectionViewDelegate, UICollectionV
                         if let name = (json["name"]){
                             
                             let name = (name as! String)
-                            let anime = "Narutis"
-                            let about = "sdfsdf"
+                            let animeography = json["animeography"] as! [[String : Any]]
+                            let anime = animeography[0]["name"] as! String
+                            let about = json["about"] as! String
                             let id = Int16(i)
                             let imageURL = "picture\(i)"
                             
@@ -156,15 +159,20 @@ extension GetInspirationsViewController: LoadingScreenDelegate{
 extension GetInspirationsViewController: UIViewControllerPreviewingDelegate{
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
 //        let viewController = UIViewController(
+        
         let storyboard = UIStoryboard(name: "CharacterDetail", bundle: nil)
+        let content = previewingContext.sourceView
+        let index = content.accessibilityIdentifier
+        
         let view = storyboard.instantiateViewController(withIdentifier: "CharacterDetail") as! CharacterDetailViewController
-        view.index = 1
+        view.index = Int(index!)
+        
         
         return view
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        print("OK")
+        self.present(viewControllerToCommit, animated: true, completion: nil)
     }
     
     
