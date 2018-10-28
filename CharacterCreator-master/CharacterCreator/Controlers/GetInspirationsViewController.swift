@@ -81,7 +81,10 @@ extension GetInspirationsViewController: UICollectionViewDelegate, UICollectionV
         let storyboard = UIStoryboard(name: "CharacterDetail", bundle: nil)
         let view = storyboard.instantiateViewController(withIdentifier: "CharacterDetail") as! CharacterDetailViewController
         view.index = indexPath.row
-        self.present(view, animated: true, completion: nil)
+        self.modalTransitionStyle = .flipHorizontal
+        self.present(view, animated: true) {
+            
+        }
         
         
     }

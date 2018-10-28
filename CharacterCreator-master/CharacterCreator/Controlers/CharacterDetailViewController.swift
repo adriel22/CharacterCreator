@@ -12,6 +12,8 @@ class CharacterDetailViewController: UIViewController {
     
     var index: Int?
 
+    
+    @IBOutlet var closeGesture: UIScreenEdgePanGestureRecognizer!
     @IBOutlet weak var animeLabel: UILabel!
     @IBOutlet weak var characterName: UILabel!
     @IBOutlet weak var characterImage: UIImageView!
@@ -24,7 +26,11 @@ class CharacterDetailViewController: UIViewController {
         let data = Storage.retrieve(CoreDataManager.sharedInstance.characters[index!].imageURL!, from: .documents, as: CharacterImage.self)
         characterImage.image = UIImage(data: data.image)
 
+        characterText.isEditable = false
+        
+        
         // Do any additional setup after loading the view.
+        closeGesture.edges = .left
     }
     
 
@@ -38,7 +44,19 @@ class CharacterDetailViewController: UIViewController {
     }
     */
 
+    @IBAction func dismissGesture(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+        
+        
+        
+        
+    }
+
     @IBAction func dismissButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+}
+extension CharacterDetailViewController: UIGestureRecognizerDelegate{
+    
 }
