@@ -8,13 +8,14 @@
 
 import Foundation
 import UIKit
-class Heads: Session {
+class Heads: Section {
     var sessionIcon: UIImage = UIImage(named: "head1Color1")!
     
-    var itens: [SessionIten]  = [
-        SessionIten(withName: "Head", andImage: UIImage(named: "head1Color1")!),
-        SessionIten(withName: "Head", andImage: UIImage(named: "head1Color2")!),
-        SessionIten(withName: "Head", andImage: UIImage(named: "head1Color3")!)
+    var itens: [SectionItem]  = [
+        SectionItem(withName: "Head", andImage: UIImage(named: "head1Color1")!),
+        SectionItem(withName: "Head", andImage: UIImage(named: "head1Color2")!),
+        SectionItem(withName: "Head", andImage: UIImage(named: "head1Color3")!),
+        SectionItem(withName: "Back", andImage: UIImage(named: "back")!)
     ]
     
 }

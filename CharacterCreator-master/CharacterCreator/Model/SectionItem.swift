@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class SessionIten {
+class SectionItem {
     var image: UIImage
     var name: String
     

@@ -12,7 +12,7 @@
         <!--My Characters-->
         <scene sceneID="6zm-vU-39N">
             <objects>
-                <viewController id="25V-wU-thr" sceneMemberID="viewController">
+                <viewController id="25V-wU-thr" customClass="MyCharactersViewController" customModule="CharacterCreator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="txX-eR-cvv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

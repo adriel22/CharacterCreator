@@ -20,8 +20,11 @@
 		FC02EB11217619AF0064C18E /* GetInspirationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02EB10217619AF0064C18E /* GetInspirationsViewController.swift */; };
 		FCF01D9A21792B9E00262FC7 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF01D9921792B9E00262FC7 /* CharacterCollectionViewCell.swift */; };
 		FCF1EA5921863017006EA0DD /* Heads.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF1EA5821863017006EA0DD /* Heads.swift */; };
-		FCF1EA5B21863030006EA0DD /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF1EA5A21863030006EA0DD /* Session.swift */; };
-		FCF1EA5D21863081006EA0DD /* SessionIten.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF1EA5C21863081006EA0DD /* SessionIten.swift */; };
+		FCF1EA5B21863030006EA0DD /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF1EA5A21863030006EA0DD /* Section.swift */; };
+		FCF1EA5D21863081006EA0DD /* SectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF1EA5C21863081006EA0DD /* SectionItem.swift */; };
+		FCF1EA5F21865B30006EA0DD /* Eyes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF1EA5E21865B30006EA0DD /* Eyes.swift */; };
+		FCF1EA612186766C006EA0DD /* Nose.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF1EA602186766C006EA0DD /* Nose.swift */; };
+		FCF1EA6321869082006EA0DD /* MyCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF1EA6221869082006EA0DD /* MyCharactersViewController.swift */; };
 		FCF1FBB5217BD38400B25517 /* InitialSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF1FBB4217BD38400B25517 /* InitialSettings.swift */; };
 		FCF36A512178B5A900BCB411 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF36A502178B5A900BCB411 /* LoadingViewController.swift */; };
 		FCF36A542178B80000BCB411 /* LoadingScreenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF36A532178B80000BCB411 /* LoadingScreenDelegate.swift */; };
@@ -72,8 +75,11 @@
 		FC02EB10217619AF0064C18E /* GetInspirationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInspirationsViewController.swift; sourceTree = "<group>"; };
 		FCF01D9921792B9E00262FC7 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCF1EA5821863017006EA0DD /* Heads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heads.swift; sourceTree = "<group>"; };
-		FCF1EA5A21863030006EA0DD /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		FCF1EA5C21863081006EA0DD /* SessionIten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionIten.swift; sourceTree = "<group>"; };
+		FCF1EA5A21863030006EA0DD /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		FCF1EA5C21863081006EA0DD /* SectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionItem.swift; sourceTree = "<group>"; };
+		FCF1EA5E21865B30006EA0DD /* Eyes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eyes.swift; sourceTree = "<group>"; };
+		FCF1EA602186766C006EA0DD /* Nose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nose.swift; sourceTree = "<group>"; };
+		FCF1EA6221869082006EA0DD /* MyCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCharactersViewController.swift; sourceTree = "<group>"; };
 		FCF1FBB4217BD38400B25517 /* InitialSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSettings.swift; sourceTree = "<group>"; };
 		FCF36A502178B5A900BCB411 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		FCF36A532178B80000BCB411 /* LoadingScreenDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +194,7 @@
 				FCF595ED217F3C8B0015F420 /* CharacterDetailViewController.swift */,
 				FCF65C6B21854B0B00F31D6B /* NewCharacterViewController.swift */,
 				FCF65C6D21854EEE00F31D6B /* ItenCollectionViewCell.swift */,
+				FCF1EA6221869082006EA0DD /* MyCharactersViewController.swift */,
 			);
 			path = Controlers;
 			sourceTree = "<group>";
@@ -197,7 +204,7 @@
 			children = (
 				FCF36A532178B80000BCB411 /* LoadingScreenDelegate.swift */,
 				FCF3A8F8217AB4C0009F684E /* CharacterImage.swift */,
-				FCF1EA5A21863030006EA0DD /* Session.swift */,
+				FCF1EA5A21863030006EA0DD /* Section.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -217,7 +224,9 @@
 				FCF3A8FA217AB968009F684E /* Storage.swift */,
 				FCF1FBB4217BD38400B25517 /* InitialSettings.swift */,
 				FCF1EA5821863017006EA0DD /* Heads.swift */,
-				FCF1EA5C21863081006EA0DD /* SessionIten.swift */,
+				FCF1EA5E21865B30006EA0DD /* Eyes.swift */,
+				FCF1EA5C21863081006EA0DD /* SectionItem.swift */,
+				FCF1EA602186766C006EA0DD /* Nose.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -358,13 +367,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCF01D9A21792B9E00262FC7 /* CharacterCollectionViewCell.swift in Sources */,
-				FCF1EA5B21863030006EA0DD /* Session.swift in Sources */,
+				FCF1EA5B21863030006EA0DD /* Section.swift in Sources */,
 				FCF595EE217F3C8B0015F420 /* CharacterDetailViewController.swift in Sources */,
+				FCF1EA5F21865B30006EA0DD /* Eyes.swift in Sources */,
+				FCF1EA6321869082006EA0DD /* MyCharactersViewController.swift in Sources */,
 				FCF65C6E21854EEE00F31D6B /* ItenCollectionViewCell.swift in Sources */,
-				FCF1EA5D21863081006EA0DD /* SessionIten.swift in Sources */,
+				FCF1EA5D21863081006EA0DD /* SectionItem.swift in Sources */,
 				FCF36A512178B5A900BCB411 /* LoadingViewController.swift in Sources */,
 				FCF4F0482177ACD100CC2E49 /* CoreDataManager.swift in Sources */,
 				FCF3A8F9217AB4C0009F684E /* CharacterImage.swift in Sources */,
+				FCF1EA612186766C006EA0DD /* Nose.swift in Sources */,
 				FCF65C6C21854B0B00F31D6B /* NewCharacterViewController.swift in Sources */,
 				FCF78E6721774F95008F828A /* APIManager.swift in Sources */,
 				FC02EB11217619AF0064C18E /* GetInspirationsViewController.swift in Sources */,

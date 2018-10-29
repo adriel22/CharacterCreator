@@ -16,7 +16,9 @@ class GetInspirationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        let color = UIColor(red: 120/255, green: 150/255, blue: 210/255, alpha: 1)
+        self.view.backgroundColor = color
+        collectionView.backgroundColor = color
         let screenWidth = UIScreen.main.bounds.width
         
         collectionView.dataSource = self

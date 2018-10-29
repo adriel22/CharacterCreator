@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-protocol Session {
-    var itens: [SessionIten]{get}
+protocol Section {
+    var itens: [SectionItem]{get}
     var sessionIcon: UIImage{get}
 }

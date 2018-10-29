@@ -12,6 +12,7 @@ class CharacterDetailViewController: UIViewController {
     
     var index: Int?
 
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet var closeGesture: UIScreenEdgePanGestureRecognizer!
     @IBOutlet weak var animeLabel: UILabel!
@@ -20,6 +21,9 @@ class CharacterDetailViewController: UIViewController {
     @IBOutlet weak var characterText: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let color = UIColor(red: 120/255, green: 150/255, blue: 210/255, alpha: 1)
+        self.view.backgroundColor = color
+        
         characterName.text = CoreDataManager.sharedInstance.characters[index!].name
         characterText.text = CoreDataManager.sharedInstance.characters[index!].about
         animeLabel.text = CoreDataManager.sharedInstance.characters[index!].anime
@@ -31,18 +35,11 @@ class CharacterDetailViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         closeGesture.edges = .left
+        
+        scrollView.delegate = self
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func dismissGesture(_ sender: Any) {
         
@@ -58,5 +55,8 @@ class CharacterDetailViewController: UIViewController {
     }
 }
 extension CharacterDetailViewController: UIGestureRecognizerDelegate{
+    
+}
+extension CharacterDetailViewController: UIScrollViewDelegate{
     
 }
