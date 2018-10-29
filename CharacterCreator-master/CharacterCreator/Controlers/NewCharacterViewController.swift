@@ -10,7 +10,7 @@ import UIKit
 
 class NewCharacterViewController: UIViewController {
 
-    var sessions: [Section] = [Heads(), Eyes(), Nose()]
+    var sessions: [Section] = [Heads(), Eyes(), Nose(),Eyebrows(),Hairs()]
     var dataSource: [Any] = []
     var isOnSessions = true
     var element: [String:UIImageView] = [:]
@@ -19,6 +19,8 @@ class NewCharacterViewController: UIViewController {
     @IBOutlet weak var EyesImage: UIImageView!
     @IBOutlet weak var creationView: UIView!
     @IBOutlet weak var NoseImage: UIImageView!
+    @IBOutlet weak var EyebrowsImage: UIImageView!
+    @IBOutlet weak var HairImage: UIImageView!
     
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
@@ -31,11 +33,16 @@ class NewCharacterViewController: UIViewController {
         HeadImage.image = UIImage(named: "head1Color1")
         HeadImage.contentMode = .scaleAspectFit
         EyesImage.contentMode = .scaleAspectFit
+        EyebrowsImage.contentMode = .scaleAspectFit
+        HairImage.contentMode = .scaleAspectFit
+        HairImage.layer.cornerRadius = HairImage.frame.width / 2
         // Do any additional setup after loading the view.
         dataSource = sessions
         element["Head"] = HeadImage
         element["Eyes"] = EyesImage
         element["Nose"] = NoseImage
+        element["Eyebrows"] = EyebrowsImage
+        element["Hair"] = HairImage
         let color = UIColor(red: 120/255, green: 150/255, blue: 210/255, alpha: 1)
         self.view.backgroundColor = color
         

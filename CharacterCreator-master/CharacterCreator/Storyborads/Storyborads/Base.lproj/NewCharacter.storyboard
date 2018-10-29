@@ -64,6 +64,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IOZ-2g-Bfg">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1n-nS-XqB">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="8xc-ZZ-ZZi"/>
@@ -86,7 +94,9 @@
                     <tabBarItem key="tabBarItem" title="New Character" id="asU-Ck-1Po"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="EyebrowsImage" destination="IOZ-2g-Bfg" id="2Tn-9x-AB0"/>
                         <outlet property="EyesImage" destination="n58-v8-Jed" id="IeX-9p-vM4"/>
+                        <outlet property="HairImage" destination="T1n-nS-XqB" id="Rr9-HQ-6Ey"/>
                         <outlet property="HeadImage" destination="Xpi-n4-IHG" id="Dvj-gH-Edm"/>
                         <outlet property="NoseImage" destination="lpo-Dv-VoK" id="j7A-Ny-ADh"/>
                         <outlet property="collectionView" destination="aaJ-o1-QP6" id="eHW-s1-3JZ"/>

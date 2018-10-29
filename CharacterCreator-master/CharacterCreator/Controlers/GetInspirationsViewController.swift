@@ -19,7 +19,13 @@ class GetInspirationsViewController: UIViewController {
         let color = UIColor(red: 120/255, green: 150/255, blue: 210/255, alpha: 1)
         self.view.backgroundColor = color
         collectionView.backgroundColor = color
-        let screenWidth = UIScreen.main.bounds.width
+        var screenWidth: CGFloat
+        if(UIDevice.current.orientation != .landscapeLeft && UIDevice.current.orientation != .landscapeRight){
+            screenWidth = UIScreen.main.bounds.width
+        }else{
+            screenWidth = UIScreen.main.bounds.height
+        }
+        
         
         collectionView.dataSource = self
         collectionView.delegate = self

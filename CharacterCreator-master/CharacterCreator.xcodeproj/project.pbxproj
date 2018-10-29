@@ -19,6 +19,8 @@
 		FC02EB0E217618490064C18E /* GetInspirations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC02EB0D217618490064C18E /* GetInspirations.storyboard */; };
 		FC02EB11217619AF0064C18E /* GetInspirationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02EB10217619AF0064C18E /* GetInspirationsViewController.swift */; };
 		FCF01D9A21792B9E00262FC7 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF01D9921792B9E00262FC7 /* CharacterCollectionViewCell.swift */; };
+		FCF14B6F2187AD09007D6E33 /* Hairs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF14B6E2187AD09007D6E33 /* Hairs.swift */; };
+		FCF14B712187AD7D007D6E33 /* Eyebrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF14B702187AD7D007D6E33 /* Eyebrows.swift */; };
 		FCF1EA5921863017006EA0DD /* Heads.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF1EA5821863017006EA0DD /* Heads.swift */; };
 		FCF1EA5B21863030006EA0DD /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF1EA5A21863030006EA0DD /* Section.swift */; };
 		FCF1EA5D21863081006EA0DD /* SectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF1EA5C21863081006EA0DD /* SectionItem.swift */; };
@@ -74,6 +76,8 @@
 		FC02EB0D217618490064C18E /* GetInspirations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetInspirations.storyboard; sourceTree = "<group>"; };
 		FC02EB10217619AF0064C18E /* GetInspirationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInspirationsViewController.swift; sourceTree = "<group>"; };
 		FCF01D9921792B9E00262FC7 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		FCF14B6E2187AD09007D6E33 /* Hairs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hairs.swift; sourceTree = "<group>"; };
+		FCF14B702187AD7D007D6E33 /* Eyebrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eyebrows.swift; sourceTree = "<group>"; };
 		FCF1EA5821863017006EA0DD /* Heads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heads.swift; sourceTree = "<group>"; };
 		FCF1EA5A21863030006EA0DD /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		FCF1EA5C21863081006EA0DD /* SectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionItem.swift; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 				FCF1EA5E21865B30006EA0DD /* Eyes.swift */,
 				FCF1EA5C21863081006EA0DD /* SectionItem.swift */,
 				FCF1EA602186766C006EA0DD /* Nose.swift */,
+				FCF14B6E2187AD09007D6E33 /* Hairs.swift */,
+				FCF14B702187AD7D007D6E33 /* Eyebrows.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -379,9 +385,11 @@
 				FCF1EA612186766C006EA0DD /* Nose.swift in Sources */,
 				FCF65C6C21854B0B00F31D6B /* NewCharacterViewController.swift in Sources */,
 				FCF78E6721774F95008F828A /* APIManager.swift in Sources */,
+				FCF14B6F2187AD09007D6E33 /* Hairs.swift in Sources */,
 				FC02EB11217619AF0064C18E /* GetInspirationsViewController.swift in Sources */,
 				FCF1FBB5217BD38400B25517 /* InitialSettings.swift in Sources */,
 				FCF1EA5921863017006EA0DD /* Heads.swift in Sources */,
+				FCF14B712187AD7D007D6E33 /* Eyebrows.swift in Sources */,
 				FC02EAD52176103E0064C18E /* AppDelegate.swift in Sources */,
 				FCF36A542178B80000BCB411 /* LoadingScreenDelegate.swift in Sources */,
 				FC02EADD2176103E0064C18E /* CharacterCreator.xcdatamodeld in Sources */,
